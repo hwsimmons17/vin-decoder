@@ -13,7 +13,10 @@ export default function FileUploaded({
       <div className="">
         {Array.from(imageFiles).map((imageFile) => {
           return (
-            <button className="relative w-full rounded-lg border-2 border-dashed border-gray p-2 text-center hover:border-gray-400 mt-6 flex item-center justify-between">
+            <button
+              className="relative w-full rounded-lg border-2 border-dashed border-gray p-2 text-center hover:border-gray-400 mt-6 flex item-center justify-between"
+              key={imageFile.name}
+            >
               <div className="flex justify-center item-center mt-1.5">
                 <ArchiveBoxIcon className="h-6 w-6 text-gray m-0 mx-2" />
                 <span className="text-sm font-regular text-gray flex item-center align-baseline inline-block mx-2">
