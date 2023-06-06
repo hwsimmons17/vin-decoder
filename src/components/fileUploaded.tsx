@@ -57,6 +57,7 @@ function CardElement({
   const getVin = async (file: File) => {
     var formData = new FormData();
     formData.append("image", file);
+    console.log("Posting");
     const response = await fetch("/api/vin", {
       method: "POST",
       body: formData,

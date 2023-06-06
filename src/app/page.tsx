@@ -51,11 +51,7 @@ export default function Example() {
           Upload images of VIN numbers and text will be returned
         </p>
       </div>
-      <form
-        action="#"
-        method="POST"
-        className="mx-auto mt-16 max-w-xl sm:mt-20"
-      >
+      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label
@@ -77,7 +73,6 @@ export default function Example() {
                   accept="image/*"
                   name="VinViles"
                   onChange={(e) => {
-                    e.preventDefault();
                     console.log("uploading file");
                     if (e.target.files && e.target.files[0]) {
                       console.log("file uploaded");
@@ -85,7 +80,6 @@ export default function Example() {
                     }
                   }}
                   onClick={(e) => {
-                    e.preventDefault();
                     setImageFiles(null);
                     //@ts-ignore
                     e.target.value = null;
