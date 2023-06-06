@@ -85,6 +85,7 @@ export default function Example() {
                     }
                   }}
                   onClick={(e) => {
+                    e.preventDefault();
                     setImageFiles(null);
                     //@ts-ignore
                     e.target.value = null;
