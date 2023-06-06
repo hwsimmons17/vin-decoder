@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { ImageAnnotatorClient } from "@google-cloud/vision";
-import * as fs from "fs";
 
 export async function POST(req: Request) {
   const formData = await req.formData();
@@ -9,7 +8,9 @@ export async function POST(req: Request) {
   const client = new ImageAnnotatorClient({
     credentials: {
       type: "service_account",
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
+      private_key: process.env
+        .GOOGLE_PRIVATE_KEY!.split(String.raw`\n`)
+        .join("\n"),
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       client_id: process.env.GOOGLE_CLIENT_ID,
     },
