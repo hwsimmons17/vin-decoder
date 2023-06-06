@@ -5,17 +5,11 @@ export async function POST(req: Request) {
   const formData = await req.formData();
   const image = formData.get("image") as File;
 
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
 
-  console.log(privateKey);
+const creds = process.env.GOOGLE_APPLICATONS_CREDENTIALS!
 
   const client = new ImageAnnotatorClient({
-    credentials: {
-      type: "service_account",
-      private_key: privateKey,
-      client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      client_id: process.env.GOOGLE_CLIENT_ID,
-    },
+    credentials: JSON.parse(creds),
   });
   const [result] = await client.textDetection(
     Buffer.from(await image.arrayBuffer())
