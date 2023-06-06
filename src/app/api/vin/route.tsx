@@ -8,6 +8,8 @@ export async function POST(req: Request) {
 
 const creds = process.env.GOOGLE_APPLICATONS_CREDENTIALS!
 
+console.log(creds)
+
   const client = new ImageAnnotatorClient({
     credentials: JSON.parse(creds),
   });
