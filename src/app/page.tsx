@@ -51,7 +51,7 @@ export default function Example() {
           Upload images of VIN numbers and text will be returned
         </p>
       </div>
-      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <div className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label
@@ -96,7 +96,7 @@ export default function Example() {
         {imageFiles && (
           <FileUploaded imageFiles={imageFiles} clearData={clearData} />
         )}
-      </form>
+      </div>
     </div>
   );
 }
