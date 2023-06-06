@@ -5,11 +5,6 @@ import * as fs from "fs";
 export async function POST(req: Request) {
   const formData = await req.formData();
   const image = formData.get("image") as File;
-  fs.writeFile(image.name, Buffer.from(await image.arrayBuffer()), (e) => {
-    if (e) {
-      console.log(e);
-    }
-  });
 
   const client = new ImageAnnotatorClient({
     credentials: {
@@ -19,7 +14,9 @@ export async function POST(req: Request) {
       client_id: process.env.GOOGLE_CLIENT_ID,
     },
   });
-  const [result] = await client.textDetection(image.name);
+  const [result] = await client.textDetection(
+    Buffer.from(await image.arrayBuffer())
+  );
   const detections = result.textAnnotations;
   console.log(
     "full text annotations for",
@@ -50,12 +47,6 @@ export async function POST(req: Request) {
         vinNumber = trim + words[i + 1].trim();
       }
     });
-  });
-
-  fs.unlink(image.name, (e) => {
-    if (e) {
-      console.log(e);
-    }
   });
 
   return NextResponse.json({ vinNumber });
