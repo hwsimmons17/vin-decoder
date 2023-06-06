@@ -77,6 +77,7 @@ export default function Example() {
                   accept="image/*"
                   name="VinViles"
                   onChange={(e) => {
+                    e.preventDefault();
                     console.log("uploading file");
                     if (e.target.files && e.target.files[0]) {
                       console.log("file uploaded");
